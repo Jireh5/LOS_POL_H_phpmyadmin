@@ -1,393 +1,197 @@
-<?php 
-    include '../config.php';
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Los Pollos Hermanos</title>
+  <title>Admin — Los Pollos Hermanos</title>
   <link rel="icon" type="image/png" href="images/losp.png">
-  <!-- original external CSS (kept for compatibility) -->
   <link rel="stylesheet" href="styles.css">
-  
-
+  <style>
+    /* Small admin-specific styles to match existing design */
+    body { padding: 24px; }
+    .admin-header { display:flex; align-items:center; gap:16px; margin-bottom:18px }
+    .admin-title { font-size:24px; margin:0 }
+    .admin-tabs { display:flex; gap:8px; margin-bottom:16px }
+    .tab { padding:8px 14px; border-radius:6px; border:1px solid #ddd; background:#fff; cursor:pointer }
+    .tab.active { background:#111; color:#fff; }
+    .panel { display:none; background:#fff; padding:16px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06) }
+    .panel.active { display:block }
+    table { width:100%; border-collapse:collapse; margin-top:12px }
+    th, td { padding:8px 10px; border-bottom:1px solid #eee; text-align:left }
+    .placeholder { color:#666; font-style:italic }
+  </style>
 </head>
 <body>
-     <nav>
-  <a href="#hero">
-    <img src="images/lph.png" class="logo" alt="Logo">
-  </a>
-  <ul>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#bio">About</a></li>
-    <li>
-      <a href="#train">
-        <span class="full-text">Training Videos</span>
-        <span class="short-text">Training</span>
-      </a>
-    </li>
-    <li>
-      <a href="#job">
-        <span class="full-text">Job Listings</span>
-        <span class="short-text">Jobs</span>
-      </a>
-    </li>
-  </ul>
-</nav>
 
-
-  <!-- HERO SECTION -->
-  <div class="hero" id="hero">  
-    <div class="content">
-      <h1>Los Pollos <br> Hermanos</h1>
-      <a href="#menu">EXPLORE</a>
+  <div class="admin-header">
+    <img src="images/lph.png" alt="logo" style="height:44px">
+    <div>
+      <h1 class="admin-title">Admin Dashboard</h1>
+      <div class="placeholder">Manage Jobs & Applicants</div>
     </div>
   </div>
 
-  <!-- RESTAURANT MENU SECTION -->
-  <section id="menu" class="section">
-    <h1><br>Menu</h1>
-    <p>Here are Gustavo Fring's picks</p>
-
-    <div class="menu-grid">
-      <!-- keep original image references but wrapped to show metadata -->
-      <div class="menu-item-card"><img src="images/polloloco.png" alt="work1"><span class="meta">Pollos Burritos</span></div>
-      <div class="menu-item-card"><img src="images/polloloco1.jpg" alt="work2"><span class="meta">The Full Measure</span></div>
-      <div class="menu-item-card"><img src="images/pollolocoo.jpg" alt="work3"><span class="meta">Pollo Loco</span></div>
-      <div class="menu-item-card"><img src="images/spicecurls.jpg" alt="work4"><span class="meta">Spice Curls</span></div>
-      <div class="menu-item-card"><img src="images/fam.jpeg" alt="work5"><span class="meta">Famiglia</span></div>
-      <div class="menu-item-card"><img src="images/bev.jpeg" alt="work6"><span class="meta">Bebida</span></div>
-      <div class="menu-item-card"><img src="images/pollotorta.jpg" alt="work7"><span class="meta">Pollo Torta</span></div>
-      <div class="menu-item-card"><img src="images/tenders.jpg" alt="work8"><span class="meta">Pollos Tenders</span></div>
-      <div class="menu-item-card"><img src="images/sides.jpg" alt="work9"><span class="meta">Slaw Goodman</span></div>
-      <div class="menu-item-card"><img src="images/wings.jpg" alt="work10"><span class="meta">Wingicita</span></div>
-      <div class="menu-item-card"><img src="images/elheisenberg.avif" alt="work11"><span class="meta">El Heisenberg</span></div>
-      <div class="menu-item-card"><img src="images/bombshell.jpg" alt="work12"><span class="meta">Bombshell</span></div>
-    </div>
-  </section>
-
-  <!-- ABOUT SECTION (HOMAGE, CULTURE & VALUES) -->
-  <section id="bio" class="section">
-    <h1>Welcome!</h1>
-    <p>Welcome to Los Pollos Hermanos — where family, flavor, and flawless service come together.<br> 
-    Our chicken is prepared with the utmost care, seasoned to perfection, and served with a smile that's as warm as our kitchen. <br> 
-    Whether you're here for a quick meal or a moment of comfort, you're part of the family. <br> 
-    Taste the tradition. Experience the excellence. Only at Los Pollos Hermanos.</p>
-
-    <div class="homage">
-      <div class="bio-image">
-     <img src="images/gusfring.png" alt="Gus Fring" class="gus-floating">
-    </div>
-
-      <div class="gus-quote scroll-frame" role="region" aria-label="Gus Fring quote">
-  <div class="scroll-quote">
-    "I am the calm in the storm, and I respect discipline — in my restaurants, my people, and my work. 
-    We do things the right way here."
-  </div>
-  <div class="quote-author">— Gustavo 'Gus' Fring</div>
-
-  <div class="homage-note">
-    <h3>Homage: Philosophy & Values</h3>
-    <p>
-      Los Pollos Hermanos honors service, discipline, and community.  
-      This page is a fictional proposal inspired by the series — it celebrates how attention to process 
-      and excellence create trust with customers.
-    </p>
-  </div>
-</section>
-
-  <!-- TRAINING SECTION -->
-  <section id="train" class="section">
-  <h1>Train with Us</h1>
-
-  <div class="training-video-container">
-    <!-- Replace the src with your own video link -->
-    <iframe
-      src="https://www.youtube.com/embed/B9RgougnhiE"
-      title="Los Pollos Hermanos Training Video"
-      frameborder="0"
-      allowfullscreen
-    ></iframe>
+  <div class="admin-tabs" role="tablist">
+    <button class="tab active" data-target="jobs-panel" role="tab" aria-selected="true">Jobs</button>
+    <button class="tab" data-target="applicants-panel" role="tab" aria-selected="false">Job Applicants</button>
   </div>
 
-  <p class="training-desc">
-    Learn the Los Pollos Hermanos way — where excellence, precision, and hospitality come together.
-  </p>
+  <div id="jobs-panel" class="panel active" role="tabpanel">
+    <h2>Jobs</h2>
+    <p class="placeholder">Manage jobs</p>
 
-  <a
-    href="https://www.youtube.com/watch?v=B9RgougnhiE&list=PL4XYugONL7lZovnsdYCwehreahGVRkrfc&index=10"
-    target="_blank"
-    class="playlist-btn"
-  >
-    View Full Training Playlist
-  </a>
-</section>
-
-  <!-- JOB LISTINGS SECTION -->
-  <section id="job" class="section">
-    <h1>Be With Gus</h1>
-    <p>Join our team — roles below are inspired by the show's operations. Click Apply to submit. (This demo is frontend-only; submissions are simulated.)</p>
-
-    <div class="jobs-grid" id="jobs-grid">
-      <!-- Jobs will be injected by JS so you can easily modify them without touching HTML -->
-    </div>
-
-  <footer>
-    <a href="https://www.facebook.com/eatlospolloshermanos/">Facebook</a> | 
-    <a href="https://www.instagram.com/eatlospolloshermanos/">Instagram</a>
-  </footer>
-
-  <!-- Lightbox for menu images -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-    <img src="" alt="Preview" id="lightbox-img">
+    <table id="jobs-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Responsibilities</th>
+          <th>Skills</th>
+          <th>Branch</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
   </div>
 
-  <!-- Apply Modal -->
-  <div class="modal" id="apply-modal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="panel" role="document">
-      <h3 id="modal-job-title">Apply</h3>
-      <form id="apply-form">
-        <label for="app-name">Full name</label>
-        <input id="app-name" required>
-        <label for="app-email">Email</label>
-        <input id="app-email" type="email" required>
-        <label for="app-cv">Short pitch (or paste link to CV)</label>
-        <textarea id="app-cv" rows="4" required></textarea>
-        <div style="display:flex; gap:12px; margin-top:12px; justify-content:flex-end;">
-          <button type="button" id="apply-cancel">Cancel</button>
-          <button type="submit" id="apply-submit">Send Application</button>
-        </div>
-      </form>
-    </div>
+  <div id="applicants-panel" class="panel" role="tabpanel">
+    <h2>Job Applicants</h2>
+    <p class="placeholder">Lists of job applicants.</p>
+
+    <table id="applicants-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Applied For</th>
+          <th>Message / Pitch</th>
+          <th>Application Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
   </div>
 
   <script>
-    // ====== Lightbox ======
-    document.querySelectorAll('.menu-item-card img').forEach(img => {
-      img.style.cursor = 'pointer';
-      img.addEventListener('click', () => {
-        const lb = document.getElementById('lightbox');
-        const lbimg = document.getElementById('lightbox-img');
-        lbimg.src = img.src;
-        lb.classList.add('open');
-        lb.setAttribute('aria-hidden','false');
+    // Tab switching logic (client-side only)
+    document.querySelectorAll('.tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const target = document.getElementById(btn.getAttribute('data-target'));
+        if (target) target.classList.add('active');
       });
     });
-    document.getElementById('lightbox').addEventListener('click', (e)=>{
-      if(e.target.id === 'lightbox' || e.target.id === 'lightbox-img'){
-        e.currentTarget.classList.remove('open');
-        e.currentTarget.setAttribute('aria-hidden','true');
-      }
-    });
 
-    // ====== Jobs data & rendering ======
-    const jobs = [
-  {
-    id: 'asst-manager',
-    title: 'Assistant Manager',
-    location: 'Downtown Branch',
-    status: 'open',
-    description: 'Oversee daily operations, ensure quality standards, coordinate shifts.',
-    responsibilities: ['Manage staff schedules', 'Quality control', 'Inventory oversight'],
-    skills: ['Leadership', 'Customer service', 'Inventory basics']
-  },
-  {
-    id: 'line-cook',
-    title: 'Line Cook',
-    location: 'Main Kitchen',
-    status: 'filled',
-    description: 'Prepare menu items according to standard recipes. Maintain cleanliness.',
-    responsibilities: ['Cook menu items', 'Maintain temps', 'Prep ingredients'],
-    skills: ['Speed & accuracy', 'Food safety', 'Teamwork']
-  },
-  {
-    id: 'delivery-driver',
-    title: 'Delivery Driver',
-    location: 'Citywide',
-    status: 'open',
-    description: 'Deliver orders safely and on time, represent the brand professionally.',
-    responsibilities: ['Timely deliveries', 'Customer interaction', 'Vehicle upkeep'],
-    skills: ['Navigation', 'Punctuality', 'Communication']
-  },
-  {
-    id: 'front-staff',
-    title: 'Front-of-House Staff',
-    location: 'All Branches',
-    status: 'open',
-    description: 'Greet customers, take orders, and keep service fast and friendly.',
-    responsibilities: ['Order taking', 'Cash handling', 'Customer care'],
-    skills: ['Friendly attitude', 'Cash handling', 'Basic POS']
-  }
-];
-
-const jobsGrid = document.getElementById('jobs-grid');
-
-// Store filled jobs in localStorage (so it persists)
-function getFilledJobs() {
-  return JSON.parse(localStorage.getItem('filledPositions') || '{}');
-}
-
-function saveFilledJob(jobId) {
-  const filled = getFilledJobs();
-  filled[jobId] = true;
-  localStorage.setItem('filledPositions', JSON.stringify(filled));
-}
-
-// Render all job cards dynamically
-function renderJobs() {
-  jobsGrid.innerHTML = ''; // clear previous
-  const filled = getFilledJobs();
-
-  jobs.forEach(job => {
-    const isFilled = job.status === 'filled' || filled[job.id];
-
-    const card = document.createElement('div');
-    card.className = 'job-card';
-
-    card.innerHTML = `
-      <h3>${job.title}</h3>
-      <div class="chip">${job.location}</div>
-      <p style="margin-top:8px;">${job.description}</p>
-
-      <div style="margin-top:10px">
-        <strong>Responsibilities:</strong>
-        <ul>${job.responsibilities.map(r => `<li>${r}</li>`).join('')}</ul>
-      </div>
-
-      <div><strong>Required skills:</strong> ${job.skills.join(', ')}</div>
-
-      <div class="job-actions">
-        ${isFilled
-          ? `<button class="cta secondary" disabled>Position Filled</button>`
-          : `<button class="cta" data-job="${job.id}">Apply Now</button>`
+    // Fetch and render Jobs
+    async function fetchJobs() {
+      const tbody = document.querySelector('#jobs-table tbody');
+      tbody.innerHTML = '<tr><td colspan="8">Loading jobs…</td></tr>';
+      try {
+        const res = await fetch('./fetch_jobs.php');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        if (!json.data) throw new Error('Invalid response');
+        const rows = json.data;
+        if (!rows.length) {
+          tbody.innerHTML = '<tr><td colspan="8" class="placeholder">No jobs found.</td></tr>';
+          return;
         }
-        <button class="cta secondary" data-details="${job.id}">Details</button>
-      </div>
-    `;
 
-    jobsGrid.appendChild(card);
-  });
+        tbody.innerHTML = rows.map(r => {
+          const id = r.jobid ?? r.id ?? '';
+          const title = escapeHtml(r.job_name ?? r.job ?? '');
+          const description = escapeHtml(r.job_description ?? r.description ?? '');
+          const responsibilities = escapeHtml(r.Responsibilities ?? r.responsibilities ?? '');
+          const skills = escapeHtml(r.req_skills ?? r.skills ?? '');
+          const branch = escapeHtml(r.branch ?? r.location ?? '');
+          const status = (r.position_filled && Number(r.position_filled) === 1) ? 'Filled' : 'Open';
+          return `
+            <tr>
+              <td>${id}</td>
+              <td>${title}</td>
+              <td>${description}</td>
+              <td>${responsibilities}</td>
+              <td>${skills}</td>
+              <td>${branch}</td>
+              <td>${status}</td>
+              <td>
+                <button data-id="${id}" class="view-job">View</button>
+                <button disabled class="secondary">(actions)</button>
+              </td>
+            </tr>`;
+        }).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="5" class="placeholder">Error loading jobs: ${escapeHtml(err.message)}</td></tr>`;
+        console.error(err);
+      }
+    }
 
-  attachJobEventListeners();
-}
+    // Fetch and render Applicants
+    async function fetchApplicants() {
+      const tbody = document.querySelector('#applicants-table tbody');
+      tbody.innerHTML = '<tr><td colspan="7">Loading applicants…</td></tr>';
+      try {
+        const res = await fetch('./fetch_applicants.php');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        if (!json.data) throw new Error('Invalid response');
+        const rows = json.data;
+        if (!rows.length) {
+          tbody.innerHTML = '<tr><td colspan="7" class="placeholder">No applicants found.</td></tr>';
+          return;
+        }
 
-// Attach event listeners for Apply & Details buttons
-function attachJobEventListeners() {
-  document.querySelectorAll('[data-job]').forEach(btn => {
-    btn.addEventListener('click', e => {
-      openApplyModal(e.target.getAttribute('data-job'));
-    });
-  });
+        tbody.innerHTML = rows.map(r => {
+          // Map exact DB column names from fetch_applicants.php
+          const id = r.a_formID ?? r.id ?? '';
+          const name = escapeHtml(r.Name ?? r.name ?? '');
+          const email = escapeHtml(r.email ?? '');
+          const appliedFor = escapeHtml(r.applicant_info ?? r.job_title ?? '');
+          const message = escapeHtml((r.applicant_info ?? '').toString().substring(0, 100) + (r.applicant_info ? '…' : ''));
+          const appDate = escapeHtml(r.app_date ?? r.created_at ?? r.submitted_at ?? '');
+          return `
+            <tr>
+              <td>${id}</td>
+              <td>${name}</td>
+              <td>${email}</td>
+              <td>${appliedFor}</td>
+              <td>${message}</td>
+              <td>${appDate}</td>
+              <td><button disabled>(view)</button></td>
+            </tr>`;
+        }).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="7" class="placeholder">Error loading applicants: ${escapeHtml(err.message)}</td></tr>`;
+        console.error(err);
+      }
+    }
 
-  document.querySelectorAll('[data-details]').forEach(btn => {
-    btn.addEventListener('click', e => {
-      const jobId = e.target.getAttribute('data-details');
-      toggleDetails(jobId, e.target.closest('.job-card'));
-    });
-  });
-}
+    // small helper to escape HTML
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
 
-// Toggle job details (expand/collapse)
-function toggleDetails(jobId, card) {
-  const job = jobs.find(j => j.id === jobId);
-  const existing = card.querySelector('.more');
-  if (existing) {
-    existing.remove();
-  } else {
-    const div = document.createElement('div');
-    div.className = 'more';
-    div.style.marginTop = '10px';
-    div.innerHTML = `
-      <em>Full Description:</em> ${job.description}<br>
-      <strong>Skills:</strong> ${job.skills.join(', ')}
-    `;
-    card.appendChild(div);
-  }
-}
+    // Initialize page by fetching both datasets
+    fetchJobs();
+    fetchApplicants();
 
-// ====== APPLY MODAL ======
-const applyModal = document.getElementById('apply-modal');
-const modalTitle = document.getElementById('modal-job-title');
-let activeJobId = null;
-
-function openApplyModal(jobId) {
-  const job = jobs.find(j => j.id === jobId);
-  const card = [...document.querySelectorAll('.job-card')].find(c =>
-    c.querySelector(`[data-job="${jobId}"]`)
-  );
-
-  // Check if a form is already inside this card
-  const existingForm = card.querySelector('.inline-apply');
-  if (existingForm) {
-    // If form exists, remove it (collapse it)
-    existingForm.remove();
-    return;
-  }
-
-  // Remove any other open inline form
-  document.querySelectorAll('.inline-apply').forEach(f => f.remove());
-
-  // Create inline form
-  const form = document.createElement('form');
-  form.className = 'inline-apply';
-  form.innerHTML = `
-    <h4>Apply for: ${job.title}</h4>
-    <label>Full Name</label>
-    <input type="text" required>
-    <label>Email</label>
-    <input type="email" required>
-    <label>Short pitch or CV link</label>
-    <textarea rows="3" required></textarea>
-    <div class="inline-actions">
-      <button type="submit" class="cta">Send</button>
-      <button type="button" class="cta secondary cancel-inline">Cancel</button>
-    </div>
-  `;
-
-  // Append below the job card
-  card.appendChild(form);
-
-  // Handle submission
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    alert(`Application sent for ${job.title}!`);
-    form.remove();
-  });
-
-  // Handle cancel
-  form.querySelector('.cancel-inline').addEventListener('click', () => {
-    form.remove();
-  });
-}
-
-
-document.getElementById('apply-cancel').addEventListener('click', () => {
-  applyModal.classList.remove('open');
-  applyModal.setAttribute('aria-hidden', 'true');
-});
-
-// Handle job application submission
-document.getElementById('apply-form').addEventListener('submit', e => {
-  e.preventDefault();
-  if (activeJobId) saveFilledJob(activeJobId);
-
-  applyModal.classList.remove('open');
-  applyModal.setAttribute('aria-hidden', 'true');
-  renderJobs();
-  alert('Application sent! (Demo only — no backend processing)');
-});
-
-// ====== INIT ======
-if (!localStorage.getItem('initSample')) {
-  const sample = { 'line-cook': true }; // pre-fill one position for demo
-  localStorage.setItem('filledPositions', JSON.stringify(sample));
-  localStorage.setItem('initSample', '1');
-}
-
-renderJobs();
+    // NOTE: Actions like view/edit/delete are placeholders and disabled.
   </script>
 
 </body>
