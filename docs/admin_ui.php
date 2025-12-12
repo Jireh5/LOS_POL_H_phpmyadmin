@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin — Los Pollos Hermanos</title>
+  <title>Admin — Los Pollos Hermanos</title>
   <link rel="icon" type="image/png" href="images/losp.png">
   <link rel="stylesheet" href="styles.css">
   <style>
@@ -21,8 +22,28 @@
     th, td { padding:8px 10px; border-bottom:1px solid #eee; text-align:left }
     .placeholder { color:#666; font-style:italic }
   </style>
+  <style>
+    /* Small admin-specific styles to match existing design */
+    body { padding: 24px; }
+    .admin-header { display:flex; align-items:center; gap:16px; margin-bottom:18px }
+    .admin-title { font-size:24px; margin:0 }
+    .admin-tabs { display:flex; gap:8px; margin-bottom:16px }
+    .tab { padding:8px 14px; border-radius:6px; border:1px solid #ddd; background:#fff; cursor:pointer }
+    .tab.active { background:#111; color:#fff; }
+    .panel { display:none; background:#fff; padding:16px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06) }
+    .panel.active { display:block }
+    table { width:100%; border-collapse:collapse; margin-top:12px }
+    th, td { padding:8px 10px; border-bottom:1px solid #eee; text-align:left }
+    .placeholder { color:#666; font-style:italic }
+  </style>
 </head>
 <body>
+
+  <div class="admin-header">
+    <img src="images/lph.png" alt="logo" style="height:44px">
+    <div>
+      <h1 class="admin-title">Admin Dashboard</h1>
+      <div class="placeholder">Manage Jobs & Applicants</div>
 
   <div class="admin-header">
     <img src="images/lph.png" alt="logo" style="height:44px">
@@ -100,6 +121,14 @@
   </div>
 
   <script>
+    // Tab switching logic (client-side only)
+    document.querySelectorAll('.tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const target = document.getElementById(btn.getAttribute('data-target'));
+        if (target) target.classList.add('active');
     // Tab switching logic (client-side only)
     document.querySelectorAll('.tab').forEach(btn => {
       btn.addEventListener('click', () => {
