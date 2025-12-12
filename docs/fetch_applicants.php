@@ -22,7 +22,7 @@ if (!isset($conn) || !($conn instanceof mysqli)) {
 
 // Attempt to fetch rows from the applicant_forms table with specific columns
 $table = 'applicant_forms';
-$query = "SELECT a_formID, Name, email, applicant_info, app_date FROM `" . $conn->real_escape_string($table) . "` ORDER BY a_formID DESC";
+$query = "SELECT a_formID, Name, email, job_applied, applicant_info, app_date FROM `" . $conn->real_escape_string($table) . "` ORDER BY a_formID DESC";
 
 $result = $conn->query($query);
 if ($result === false) {
