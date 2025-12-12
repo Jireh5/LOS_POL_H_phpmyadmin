@@ -200,11 +200,15 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
 
       //capture data before closing the modal
+      const applicantName = document.getElementById('app-name').value;
+      const applicantEmail = document.getElementById('app-email').value;
+      const applicantPitch = document.getElementById('app-cv').value;
+
       const formData = {
         job_title: currentJobTitle,
-        from_name: document.getElementById('app-name').value,
-        reply_to: document.getElementById('app-email').value,
-        message: document.getElementById('app-cv').value
+        from_name: applicantName,
+        reply_to: applicantEmail,
+        message: applicantPitch
       };
       
       //close modal
@@ -226,15 +230,32 @@ document.addEventListener('DOMContentLoaded', () => {
       title.style.color = "#000";
       msg.innerText = "Please wait while we process your application.";
 
-      //send
-      const serviceID = "service_vtq31hu";
-      const companyTemplateID = "template_pt604nt";
-      const applicantTemplateID = "template_vjec73q";
-      const publicKey = "qKsuBnK_Tkfr1NDnL"; 
+      // Prepare data for database submission
+      const dbData = {
+        name: applicantName,
+        email: applicantEmail,
+        pitch: applicantPitch,
+        job: currentJobTitle
+      };
 
-      emailjs.send(serviceID, companyTemplateID, formData, publicKey)
-      .then(() => {
-          return emailjs.send(serviceID, applicantTemplateID, formData, publicKey);
+      // Submit to database
+      fetch('send_application.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dbData)
+      })
+      .then(response => response.json())
+      .then(dbResult => {
+        // After database submission, send emails
+        const serviceID = "service_vtq31hu";
+        const companyTemplateID = "template_pt604nt";
+        const applicantTemplateID = "template_vjec73q";
+        const publicKey = "qKsuBnK_Tkfr1NDnL"; 
+
+        return emailjs.send(serviceID, companyTemplateID, formData, publicKey)
+        .then(() => {
+            return emailjs.send(serviceID, applicantTemplateID, formData, publicKey);
+        });
       })
       .then(() => {
         loader.style.display = 'none'; 
@@ -293,44 +314,62 @@ document.addEventListener('DOMContentLoaded', () => {
       title.style.color = "#000";
       msg.innerText = "Please wait while we send your inquiry.";
 
+      const name = document.getElementById('con-name').value;
+      const email = document.getElementById('con-email').value;
+      const message = document.getElementById('con-message').value;
+
       const templateParams = {
-        job_title: "General Inquiry",     
-        from_name: document.getElementById('con-name').value,
-        reply_to: document.getElementById('con-email').value,
-        message: document.getElementById('con-message').value
+        job_title: "General Inquiry",
+        from_name: name,
+        reply_to: email,
+        message: message
       };
 
-      const serviceID = "service_z0tij4p";
-      const companyTemplateID = "template_b57936m";
-      const publicKey = "muMHg00QK9UwyTOLY";
+      // First, persist inquiry to the server
+      fetch('send_inquiry.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, email: email, message: message })
+      })
+      .then(res => res.json())
+      .then(serverResult => {
+        if (!serverResult || serverResult.success !== true) {
+          throw new Error(serverResult && serverResult.message ? serverResult.message : 'Server error');
+        }
 
-      emailjs.send(serviceID, companyTemplateID, templateParams, publicKey)
-        .then(() => {
-          loader.style.display = 'none';
-          title.innerText = "Message Received";
-          title.style.color = "#2e7d32";
-          msg.innerText = `Thank you, ${templateParams.from_name}. We will get back to you shortly.`;
-          okBtn.style.display = 'inline-block';
-          okBtn.innerText = "Return to Site";
+        // After server saved it, send EmailJS notification
+        const serviceID = "service_z0tij4p";
+        const companyTemplateID = "template_b57936m";
+        const publicKey = "muMHg00QK9UwyTOLY";
 
-          okBtn.onclick = () => {
-            overlay.className = 'overlay-hidden';
-            contactForm.reset();
-          };
-        })
-        .catch((error) => {
-          console.error('FAILED...', error);
-          loader.style.display = 'none';
-          title.innerText = "Transmission Error";
-          title.style.color = "#c90a0a";
-          msg.innerText = "We couldn't reach the server. Please try again later.";
-          okBtn.style.display = 'inline-block';
-          okBtn.innerText = "Close";
+        return emailjs.send(serviceID, companyTemplateID, templateParams, publicKey);
+      })
+      .then(() => {
+        loader.style.display = 'none';
+        title.innerText = "Message Received";
+        title.style.color = "#2e7d32";
+        msg.innerText = `Thank you, ${templateParams.from_name}. We will get back to you shortly.`;
+        okBtn.style.display = 'inline-block';
+        okBtn.innerText = "Return to Site";
 
-          okBtn.onclick = () => {
-            overlay.className = 'overlay-hidden';
-          };
-        });
+        okBtn.onclick = () => {
+          overlay.className = 'overlay-hidden';
+          contactForm.reset();
+        };
+      })
+      .catch((error) => {
+        console.error('INQUIRY FAILED...', error);
+        loader.style.display = 'none';
+        title.innerText = "Transmission Error";
+        title.style.color = "#c90a0a";
+        msg.innerText = "We couldn't send your inquiry. Please try again later.";
+        okBtn.style.display = 'inline-block';
+        okBtn.innerText = "Close";
+
+        okBtn.onclick = () => {
+          overlay.className = 'overlay-hidden';
+        };
+      });
     });
   }
 });
