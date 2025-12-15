@@ -4,14 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Los Pollos Hermanos</title>
-
-  <link rel="icon" type="image/png" href="images/losp.png">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/sections.css">
-  <link rel="stylesheet" href="css/responsive.css">
   
+  <link rel="icon" type="image/png" href="images/losp.png">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/bio.css">
+  <link rel="stylesheet" href="../css/contact.css">
+  <link rel="stylesheet" href="../css/hero.css">
+  <link rel="stylesheet" href="../css/jobs.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/menu.css">
+  <link rel="stylesheet" href="../css/modal.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/training.css">
+  <link rel="stylesheet" href="../css/maps.css">
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 </head>
@@ -25,27 +34,30 @@
     </div>
   </div>
   
-     <nav>
+ <nav>
   <a href="#hero">
-    <img src="images/lph.png" class="logo" alt="Logo">
+  <img src="../images/lph.png" alt="Logo" class="logo">
   </a>
+  
+  <!-- Hamburger button -->
+  <button class="hamburger" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  
   <ul>
-  <li><a href="#menu">Menu</a></li>
-  <li><a href="#bio">About</a></li>
-  <li>
-    <a href="#train">
-      <span class="full-text">Training Videos</span>
-      <span class="short-text">Training</span>
-    </a>
-  </li>
-  <li>
-    <a href="#job">
-      <span class="full-text">Job Listings</span>
-      <span class="short-text">Jobs</span>
-    </a>
-  </li>
-  <li><a href="#contact">Contact</a></li>
-</ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#bio">Bio</a></li>
+    <li><a href="#train">Training</a></li>
+    <li><a href="#job">Jobs</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#stores">Locations</a></li>
+  </ul>
+  
+  <!-- Overlay backdrop -->
+  <div class="nav-overlay"></div>
 </nav>
 
 
@@ -64,18 +76,18 @@
 
     <div class="menu-grid">
       <!-- keep original image references but wrapped to show metadata -->
-      <div class="menu-item-card"><img src="images/polloloco.png" alt="work1"><span class="meta">Pollos Burritos</span></div>
-      <div class="menu-item-card"><img src="images/polloloco1.jpg" alt="work2"><span class="meta">The Full Measure</span></div>
-      <div class="menu-item-card"><img src="images/pollolocoo.jpg" alt="work3"><span class="meta">Pollo Loco</span></div>
-      <div class="menu-item-card"><img src="images/spicecurls.jpg" alt="work4"><span class="meta">Spice Curls</span></div>
-      <div class="menu-item-card"><img src="images/fam.jpeg" alt="work5"><span class="meta">Famiglia</span></div>
-      <div class="menu-item-card"><img src="images/bev.jpeg" alt="work6"><span class="meta">Bebida</span></div>
-      <div class="menu-item-card"><img src="images/pollotorta.jpg" alt="work7"><span class="meta">Pollo Torta</span></div>
-      <div class="menu-item-card"><img src="images/tenders.jpg" alt="work8"><span class="meta">Pollos Tenders</span></div>
-      <div class="menu-item-card"><img src="images/sides.jpg" alt="work9"><span class="meta">Slaw Goodman</span></div>
-      <div class="menu-item-card"><img src="images/wings.jpg" alt="work10"><span class="meta">Wingicita</span></div>
-      <div class="menu-item-card"><img src="images/elheisenberg.avif" alt="work11"><span class="meta">El Heisenberg</span></div>
-      <div class="menu-item-card"><img src="images/bombshell.jpg" alt="work12"><span class="meta">Bombshell</span></div>
+      <div class="menu-item-card"><img src="../images/polloloco.png" alt="work1"><span class="meta">Pollos Burritos</span></div>
+      <div class="menu-item-card"><img src="../images/polloloco1.jpg" alt="work2"><span class="meta">The Full Measure</span></div>
+      <div class="menu-item-card"><img src="../images/pollolocoo.jpg" alt="work3"><span class="meta">Pollo Loco</span></div>
+      <div class="menu-item-card"><img src="../images/spicecurls.jpg" alt="work4"><span class="meta">Spice Curls</span></div>
+      <div class="menu-item-card"><img src="../images/fam.jpeg" alt="work5"><span class="meta">Famiglia</span></div>
+      <div class="menu-item-card"><img src="../images/bev.jpeg" alt="work6"><span class="meta">Bebida</span></div>
+      <div class="menu-item-card"><img src="../images/pollotorta.jpg" alt="work7"><span class="meta">Pollo Torta</span></div>
+      <div class="menu-item-card"><img src="../images/tenders.jpg" alt="work8"><span class="meta">Pollos Tenders</span></div>
+      <div class="menu-item-card"><img src="../images/sides.jpg" alt="work9"><span class="meta">Slaw Goodman</span></div>
+      <div class="menu-item-card"><img src="../images/wings.jpg" alt="work10"><span class="meta">Wingicita</span></div>
+      <div class="menu-item-card"><img src="../images/elheisenberg.avif" alt="work11"><span class="meta">El Heisenberg</span></div>
+      <div class="menu-item-card"><img src="../images/bombshell.jpg" alt="work12"><span class="meta">Bombshell</span></div>
     </div>
   </section>
 
@@ -83,13 +95,13 @@
   <section id="bio" class="section">
     <h1>Welcome!</h1>
     <p>Welcome to Los Pollos Hermanos — where family, flavor, and flawless service come together.<br> 
-    Our chicken is prepared with the utmost care, seasoned to perfection, and served with a smile that's as warm as our kitchen. <br> 
-    Whether you're here for a quick meal or a moment of comfort, you're part of the family. <br> 
+    Our chicken is prepared with the utmost care, seasoned to perfection, and served with a smile that’s as warm as our kitchen. <br> 
+    Whether you’re here for a quick meal or a moment of comfort, you’re part of the family. <br> 
     Taste the tradition. Experience the excellence. <br> Only at Los Pollos Hermanos. </p>
 
     <div class="homage">
       <div class="bio-image">
-     <img src="images/gusfring.png" alt="Gus Fring" class="gus-floating">
+     <img src="../images/gusfring.png" alt="Gus Fring" class="gus-floating">
     </div>
 
       <div class="gus-quote scroll-frame" role="region" aria-label="Gus Fring quote">
@@ -178,6 +190,24 @@
     </div>
 
   </div>
+  </section>
+  <!-- MAP SECTION -->
+
+  <section id="stores" class="section">
+  <h1>Our Locations</h1>
+  <p>Serving excellence across the Southwest.</p>
+
+  <div id="map"></div>
+
+  <div class="store-list">
+    <button class="lph-btn" onclick="focusStore(35.0844, -106.6504)">
+      Albuquerque, NM
+    </button>
+    <button class="lph-btn" onclick="focusStore(34.0522, -118.2437)">
+      Los Angeles, CA
+    </button>
+  </div>
+
 
   <footer>
     <div>
@@ -222,6 +252,18 @@
     </div>
   </div>
 
+  <div id="confirm-overlay" class="overlay-hidden">
+      <div class="status-box">
+        <h3 id="confirm-title">Confirm Submission</h3>
+        <p id="confirm-message">Are you sure you want to submit your application/inquiry?</p>
+        <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
+          <button id="confirm-cancel" class="cta secondary">Cancel</button>
+          <button id="confirm-proceed" class="cta">Proceed</button>
+        </div>
+      </div>
+    </div>
+    
+  </section> 
 <script src="script.js"></script>
 </body>
 </html>

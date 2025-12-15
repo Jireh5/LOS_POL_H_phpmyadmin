@@ -1,6 +1,6 @@
 <?php
 // load DB config and connection
-require_once __DIR__ . '/config.php';
+require_once __DIR__ . '../config.php';
 header('Content-Type: application/json; charset=utf-8');
 
 // Ensure $conn exists

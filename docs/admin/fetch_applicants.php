@@ -4,14 +4,8 @@
 
 header('Content-Type: application/json; charset=utf-8');
 
-// include DB config (this file exists in the same folder)
-$cfg = __DIR__ . '/config.php';
-if (!file_exists($cfg)) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Database config not found']);
-    exit;
-}
-require $cfg; // provides $conn (mysqli)
+// Include database configuration
+include '../config.php';
 
 // Ensure $conn is available
 if (!isset($conn) || !($conn instanceof mysqli)) {

@@ -1,13 +1,13 @@
 <?php
 // Include database configuration
-include 'config.php';
+include '../config.php';
 
 // Set header to JSON
 header('Content-Type: application/json');
 
 try {
-    // Fetch all data from inquiry table with all columns
-    $sql = "SELECT inqID, name, email, message FROM inquiry";
+    // FIX: Selecting the new column 'seen' (escaped with backticks for safety)
+    $sql = "SELECT inqID, name, email, message, `seen` FROM inquiry";
     $result = $conn->query($sql);
 
     // Check if query was successful

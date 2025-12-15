@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include '../config.php';
 header('Content-Type: application/json; charset=utf-8');
 
 // Get JSON input
