@@ -3,7 +3,7 @@
     
     body {
       background: linear-gradient(135deg, rgba(245, 247, 250, 0.4) 20%, rgba(195, 207, 226, 0.4) 100%), 
-                  url('images/los3.jpg') center/cover fixed no-repeat;
+                  url('../images/los3.jpg') center/cover fixed no-repeat;
       background-attachment: fixed;
       padding: 0;
       margin: 0;
