@@ -5,7 +5,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  color: var(--lph-cream);
+  color: #fff;
   padding: clamp(60px, 8vw, 100px) clamp(10%, 10vw, 10%);
 }
 
@@ -41,6 +41,8 @@
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.089);
 }
 
+
+
 .lph-btn {
   display: inline-block;
   cursor: pointer;
@@ -58,7 +60,7 @@
 }
 
 .lph-btn:hover {
-  background: var(--lph-deep);
+  background: #c90a0a;
   color: #fff;
   transform: translateY(-3px);
 }

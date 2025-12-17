@@ -7,7 +7,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  color: var(--lph-cream);
+  color: #fff;
   position: relative;
   text-shadow: 1px 1px 3px #000;
 }
@@ -50,6 +50,7 @@
   flex-wrap: wrap;
 }
 
+/* Homage Layout */
 #bio .homage {
   display: grid;
   grid-template-columns: 360px 1fr;
@@ -102,10 +103,10 @@
 
 #bio .gus-quote {
   background: rgba(255, 255,255, 0.027);
-  border-top: 1px solid rgba(255, 255, 255, 0.4); 
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.089); border-radius: 12px;
-  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4); /* Subtle transparent border */
+  border-left: 1px solid rgba(255, 255, 255, 0.3); /* Subtle transparent border */
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.089); /* Soft shadow */  border-radius: 12px;
+  backdrop-filter: blur(8px); /* The blurring effect */
   padding: 20px;
   font-style: italic;
   position: relative;
@@ -115,6 +116,7 @@
   box-shadow: var(--card-shadow);
 }
 
+/* Note/Cards */
 .homage-note {
   background: #fff8dc;
   padding: 25px 30px;

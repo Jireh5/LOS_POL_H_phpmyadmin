@@ -8,13 +8,13 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  color: var(--lph-cream);
+  color: #fff;
   padding: clamp(60px, 8vw, 100px) clamp(10%, 10vw, 10%);
 }
 
 #menu h1,
 #menu p {
-  color: var(--lph-cream);
+  color: #fff;
   margin-top: 10px;
   margin-bottom: 10px;
   text-shadow: 1px 1px 3px #000;
@@ -59,6 +59,6 @@
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.2));
   padding: 8px 12px;
   border-radius: 999px;
-  color: var(--lph-cream);
+  color: #fff;
   font-weight: 700;
 }

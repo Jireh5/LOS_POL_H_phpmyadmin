@@ -6,7 +6,7 @@
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  color: var(--lph-cream);
+  color: #fff;
   text-shadow: 1px 1px 3px #000;
   position: relative;
 }
@@ -26,7 +26,7 @@
 
 #contact h1 {
   margin-top: 15px;
-  color: var(--lph-cream);
+  color: #fff; 
 }
 
 #contact p1{
@@ -48,7 +48,7 @@
 ------------------------- */
 .contact-card,
 .model-wrapper {
-  background: var(--lph-cream); 
+  background: #fffef8; 
   border-radius: 10px;
   padding: 25px; 
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
@@ -120,7 +120,7 @@
   font-size: 14px;
   margin-top: 10px;
   display: block;
-  color: var(--lph-red);
+  color: #c90a0a;
 }
 
 .contact-card input,
@@ -131,7 +131,7 @@
   border-radius: 8px;
   margin-top: 5px;
   font-family: inherit;
-  background: var(--lph-cream);
+  background: #fff;
   color: #000;
   position: relative;
   z-index: 1;
@@ -149,6 +149,7 @@
   z-index: 1;
 }
 
+/* 3D Model Specifics */
 .sketchfab-embed-wrapper {
   width: 100%;
   flex-grow: 1; 

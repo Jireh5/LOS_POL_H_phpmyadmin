@@ -11,10 +11,10 @@ nav {
   justify-content: space-between;
   align-items: center;
   z-index: 10000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4); 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4); /* Subtle transparent border */
   backdrop-filter: blur(8px);
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.06));
-   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.089); 
+   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.089); /* Soft shadow */
 }
 
 nav .logo {
@@ -54,10 +54,10 @@ footer {
   margin: 40px auto; /*centers it*/
   padding: 30px;
   background: rgba(255, 255,255, 0.027);
-  backdrop-filter: blur(8px); 
-  border-top: 1px solid rgba(255, 255, 255, 0.4); 
-  border-left: 1px solid rgba(255, 255, 255, 0.3); 
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.089); 
+  backdrop-filter: blur(8px); /* The blurring effect */
+  border-top: 1px solid rgba(255, 255, 255, 0.4); /* Subtle transparent ``order */
+  border-left: 1px solid rgba(255, 255, 255, 0.3); /* Subtle transparent border */
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.089); /* Soft shadow */
   color: #fff;
   position: relative;
   border-radius: 32px;
